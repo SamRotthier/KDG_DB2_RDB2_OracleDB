@@ -37,8 +37,7 @@ Logisch Model
 
     Intermediërende  entiteiten
 ---
-- Player_locations: Players - Location
-- Highscores: Players - Computergames
+- Player_Guild: Players - Guilds
 
 
     Logisch ERD
@@ -48,9 +47,7 @@ Logisch Model
 
 Verschillen na Normalisatie
 ---
-- Extra entiteit: Zipcodes
-- Extra entities: Countries
-- Tabel player_locations heeft gewijzigde samengestelde sleutel omdat je als speler bijvoorbeeld verschillende huureigendommen kunt hebben.
-    - PK: (Player_id, location_id, startdatum)
+
+- Tabel Player_Guild is toegevoegd voor de relatie tussen deze tabellen voor te kunnen stellen
 
 ![Finaal Model](Finaal_ERD_M2.png)
