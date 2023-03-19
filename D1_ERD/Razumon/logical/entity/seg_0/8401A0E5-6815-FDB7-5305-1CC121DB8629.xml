@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8401A0E5-6815-FDB7-5305-1CC121DB8629" name="Guild">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 13:52:37 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="GuildId" id="7C52235D-0A4D-E923-83D8-4F1979744D84">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:42:23 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="GuildName" id="21C9D5AF-14B6-1C59-8D9A-C9CBC967766E">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:42:36 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="GuildSkill" id="922A0D3D-6C75-6AE8-B0AB-82E1E0B4E79E">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:42:56 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<listOfValues>
+<valueDef value="Building" description=""/>
+<valueDef value="Crafting" description=""/>
+<valueDef value="Farming" description=""/>
+<valueDef value="Hunting" description=""/>
+<valueDef value="Mining" description=""/>
+</listOfValues>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="MadeOn" id="97AEEDEE-29D8-698A-486F-0E8670A13431">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:43:13 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Level" id="87950E52-0B19-B7D8-1FE6-33982BA4A795">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:43:29 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="MadeBy" id="6FAFC05D-C24C-C937-D329-2E584AA7A15E">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:43:52 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="0501A16D-8FA2-607C-3C99-6A1957C5E77C" name="Guild PK">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:42:32 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7C52235D-0A4D-E923-83D8-4F1979744D84</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

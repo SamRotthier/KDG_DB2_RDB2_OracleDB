@@ -1,0 +1,88 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6E9743D0-ED12-0B49-690E-0115142DEAF5" name="Monster">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>AA80DC9C-71F3-8EC8-7930-61E08DD9CA76</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="MonsterId" id="F559777B-AAC5-9CBD-80B2-20C434CBF9AF">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>D4B9F2C4-A765-856D-5B09-3E19754B2FD0</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MonsterName" id="8CF9CA5D-885C-B902-A0BF-EAA7460EE637">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>9AC02890-D75E-E3CD-6B82-54103440A7D6</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Health" id="684CBB6E-8FD9-67B0-433E-7E0CEB0CC6CF">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>A00E66B7-FCA2-B4F0-49F5-614362ABD5D0</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Level" id="ADED3220-C918-17B1-CF61-E9282CF09EAA">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>E2BB4693-43E9-3F23-EC5C-24A03C988160</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CanEvolve" id="5838D019-074C-E6FB-0390-D3392DAF2E12">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>B983E772-C1EF-488B-D829-A5369C28673B</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<listOfValues>
+<valueDef value="False" description=""/>
+<valueDef value="True" description=""/>
+</listOfValues>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9DF4D4A5-35E7-CB4D-6D5B-410C5E5AF962" name="Monster_PK">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>0EF0793E-F079-2037-854D-CE175370312B</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F559777B-AAC5-9CBD-80B2-20C434CBF9AF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

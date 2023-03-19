@@ -1,0 +1,101 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="AA80DC9C-71F3-8EC8-7930-61E08DD9CA76" name="Monster">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 13:52:48 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="MonsterId" id="D4B9F2C4-A765-856D-5B09-3E19754B2FD0">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:49:19 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="MonsterName" id="9AC02890-D75E-E3CD-6B82-54103440A7D6">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:49:31 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Health" id="A00E66B7-FCA2-B4F0-49F5-614362ABD5D0">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:49:48 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Level" id="E2BB4693-43E9-3F23-EC5C-24A03C988160">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:50:00 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CanEvolve" id="B983E772-C1EF-488B-D829-A5369C28673B">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:50:12 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<listOfValues>
+<valueDef value="False" description=""/>
+<valueDef value="True" description=""/>
+</listOfValues>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="0EF0793E-F079-2037-854D-CE175370312B" name="Monster PK">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:49:26 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D4B9F2C4-A765-856D-5B09-3E19754B2FD0</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

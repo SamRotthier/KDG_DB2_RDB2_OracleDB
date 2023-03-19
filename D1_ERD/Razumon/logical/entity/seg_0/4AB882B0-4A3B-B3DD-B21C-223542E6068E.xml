@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4AB882B0-4A3B-B3DD-B21C-223542E6068E" name="Team">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 13:52:43 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="TeamId" id="B7C85CAF-5E2C-F4A3-EB82-69ED5C4EBA7E">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:47:50 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TeamName" id="143D28AC-3D05-510A-ACAC-D46DD65B8F28">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:48:25 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TimePlayedWithTeam" id="962DFA3A-96D9-153E-3DF6-D22AE959F35A">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:48:32 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="MonsterId" id="942284C3-3172-5DC7-E2C2-2C390D5054AF">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 13:38:28 UTC</createdTime>
+<generatorID>370F5B04-F814-544B-2BF6-F777AFEEFD75</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<referedAttribute>D4B9F2C4-A765-856D-5B09-3E19754B2FD0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PlayerId" id="F9D13966-1B51-CC0B-D20E-BB26886C451E">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 13:39:29 UTC</createdTime>
+<generatorID>9F975F86-BC5D-A304-0BA1-3B44C9EFD2C1</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<referedAttribute>A17F7327-77ED-F706-4643-03856928C260</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E145DDA0-A656-6B3B-1A01-D0063EB5F4F2" name="Team PK">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 14:48:57 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B7C85CAF-5E2C-F4A3-EB82-69ED5C4EBA7E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,123 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="006C34F7-A84E-CD80-7363-F71F4735B4E0" name="Team">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>4AB882B0-4A3B-B3DD-B21C-223542E6068E</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="TeamId" id="F4B5AA16-6A61-5B7A-CA27-E17CF3542542">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>B7C85CAF-5E2C-F4A3-EB82-69ED5C4EBA7E</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TeamName" id="94A4FB7B-7F12-6A38-6A0F-623473D91391">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>143D28AC-3D05-510A-ACAC-D46DD65B8F28</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TimePlayedWithTeam" id="4BDB02CA-8037-D072-1D4B-B0AAFE744BC5">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>962DFA3A-96D9-153E-3DF6-D22AE959F35A</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Monster_MonsterId" id="33680EEE-3091-C443-7B7F-860CBE7BED22">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>942284C3-3172-5DC7-E2C2-2C390D5054AF</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7352BD25-5753-BBA6-2281-0DF4B5E5691A" referredColumn="F559777B-AAC5-9CBD-80B2-20C434CBF9AF"/>
+</associations>
+</Column>
+<Column name="Player_PlayerId" id="6FC86260-76E1-6981-58E1-E73C3319E905">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>F9D13966-1B51-CC0B-D20E-BB26886C451E</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7322E642-7B9A-15E1-0378-F4E9DF3C3568" referredColumn="5E46A0EF-B2D3-0C0E-65C8-C9A950877E41"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="759CCEA7-176A-4262-E437-06FAEC2D4810" name="Team_PK">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>E145DDA0-A656-6B3B-1A01-D0063EB5F4F2</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F4B5AA16-6A61-5B7A-CA27-E17CF3542542"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="40130598-C632-05F0-E6FB-6564FC96FE8C" name="Team__IDX">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>9F975F86-BC5D-A304-0BA1-3B44C9EFD2C1</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="6FC86260-76E1-6981-58E1-E73C3319E905"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5F4F0849-8B0F-31F1-E335-881FC9B5A262" name="Team_Monster_FK">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>370F5B04-F814-544B-2BF6-F777AFEEFD75</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="33680EEE-3091-C443-7B7F-860CBE7BED22"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F0B8DC12-501A-5AEE-ED3C-A265E8F7BBFA" name="Team_Player_FK">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 16:35:38 UTC</createdTime>
+<generatorID>9F975F86-BC5D-A304-0BA1-3B44C9EFD2C1</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6FC86260-76E1-6981-58E1-E73C3319E905"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

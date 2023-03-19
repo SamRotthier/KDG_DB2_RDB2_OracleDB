@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FB7A3A77-A243-4421-302E-3197A04CF6A8" name="Guild">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>8401A0E5-6815-FDB7-5305-1CC121DB8629</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="GuildId" id="82996A04-F4B6-0E3D-784E-FB808F287083">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>7C52235D-0A4D-E923-83D8-4F1979744D84</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="GuildName" id="38D9086F-AE2B-A5C5-8D89-CAD55589CE29">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>21C9D5AF-14B6-1C59-8D9A-C9CBC967766E</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="GuildSkill" id="28FE25CE-B378-9249-23D9-252BE7D6C98D">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>922A0D3D-6C75-6AE8-B0AB-82E1E0B4E79E</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<listOfValues>
+<valueDef value="Building" description=""/>
+<valueDef value="Crafting" description=""/>
+<valueDef value="Farming" description=""/>
+<valueDef value="Hunting" description=""/>
+<valueDef value="Mining" description=""/>
+</listOfValues>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MadeOn" id="82234300-8B12-3B75-57B5-E77AB6C25059">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>97AEEDEE-29D8-698A-486F-0E8670A13431</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Level" id="A1155B5D-2F44-8BB4-1756-3F2E16CBF3B5">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>87950E52-0B19-B7D8-1FE6-33982BA4A795</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MadeBy" id="150EE1D1-1468-208D-8090-047EE2AB224F">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>6FAFC05D-C24C-C937-D329-2E584AA7A15E</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FD9852AB-6A55-3C6E-CD29-DDB08819B927" name="Guild_PK">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 14:37:59 UTC</createdTime>
+<generatorID>0501A16D-8FA2-607C-3C99-6A1957C5E77C</generatorID>
+<ownerDesignName>Razumon</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="82996A04-F4B6-0E3D-784E-FB808F287083"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

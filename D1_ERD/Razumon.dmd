@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Razumon" id="1EE25F13-852C-2768-23CD-B3B081DA9A76" version="3.5">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-17 13:39:11 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>1EE25F13-852C-2768-23CD-B3B081DA9A76</designId>
+</OSDM_Design>

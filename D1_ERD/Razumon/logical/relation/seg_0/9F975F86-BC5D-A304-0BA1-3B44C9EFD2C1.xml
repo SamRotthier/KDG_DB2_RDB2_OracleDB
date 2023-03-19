@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_4" directorySegmentName="seg_0" id="9F975F86-BC5D-A304-0BA1-3B44C9EFD2C1">
+<createdBy>samro</createdBy>
+<createdTime>2023-03-19 13:37:14 UTC</createdTime>
+<ownerDesignName>Razumon</ownerDesignName>
+<engineerTo>
+<item key="5143D5EF-9A61-8D5A-0420-B47615D0A2E5" value="true"/>
+</engineerTo>
+<sourcePk>BF848241-2A51-370F-5856-00EF754F1DDA</sourcePk>
+<targetPk>E145DDA0-A656-6B3B-1A01-D0063EB5F4F2</targetPk>
+<identifying>false</identifying>
+<nameOnSource>have a</nameOnSource>
+<nameOnTarget>is owned by</nameOnTarget>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>0DC99D7A-9E25-FEFA-16AE-278121AD37F2</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>4AB882B0-4A3B-B3DD-B21C-223542E6068E</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
