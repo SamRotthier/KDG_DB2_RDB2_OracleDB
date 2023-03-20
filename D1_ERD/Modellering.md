@@ -48,6 +48,6 @@ Logisch Model
 Verschillen na Normalisatie
 ---
 
-- Tabel Player_Guild is toegevoegd voor de relatie tussen deze tabellen voor te kunnen stellen
+- Tabel Monster_Team is toegevoegd voor de relatie tussen deze tabellen voor te kunnen stellen
 
-![Finaal Model](Finaal_ERD_M2.png)
+![Finaal Model](logisch.PNG)
