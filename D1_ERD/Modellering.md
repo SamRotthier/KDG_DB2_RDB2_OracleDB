@@ -11,7 +11,7 @@ Conceptueel Model
 - Player(**PlayerId**, Name, Birthdate, Gender, Level,TimePlayed, HomeAddress)
 - Guild(**GuildId**, GuildName, GuildSkill, MadeOn, Level, PlayersInGuild, MadeBy)
 - Team(**TeamId**, Monsters, TeamName, TimePlayedWithTeam)
--Monster(**MonsterId**,MonsterName, Health, Level, CanEvolve)
+- Monster(**MonsterId**,MonsterName, Health, Level, CanEvolve)
 
 
     Domeinen - constraints
@@ -47,7 +47,7 @@ Logisch Model
 
 Verschillen na Normalisatie
 ---
-
-- Tabel Monster_Team is toegevoegd voor de relatie tussen deze tabellen voor te kunnen stellen
-
-![Finaal Model](logisch.PNG)
+- toevoeging van tijds attributen (StartDate en LastLoginDate)
+- Geen verdere veranderingen, maar wel verduidelijking hoe de monsters bij een team horen 
+(TeamId in monster geeft een duidelijk beeld van bij welk team een monster hoort)
+![Finaal Model](Finaal.PNG)
