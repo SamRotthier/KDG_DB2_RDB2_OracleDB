@@ -18,7 +18,7 @@ Conceptueel Model
 --- 
 - PlayerName: Starts with Capital and minimum 3 long
 - PlayerLevel: PlayerLevel > 0
-- Computergame: release_date < last_updated
+- GuildLevel: Level > 0 And Level < 100
 
 
     Tijd - historiek
