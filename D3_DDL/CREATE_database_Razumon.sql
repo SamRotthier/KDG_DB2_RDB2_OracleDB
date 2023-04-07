@@ -4,7 +4,8 @@ DROP TABLE guild cascade constraints;
 DROP TABLE monster cascade constraints;
 DROP TABLE player cascade constraints;
 DROP TABLE team cascade constraints;
-DROP TABLE relation_3 CASCADE CONSTRAINTS;
+DROP TABLE relation_1 CASCADE CONSTRAINTS;
+
 
 
 
@@ -15,7 +16,7 @@ CREATE TABLE guild (
     guildskill VARCHAR2(15),
     madeon     DATE NOT NULL,
     "level"    INTEGER,
-    madeby     VARCHAR2(30)
+    madeby     INTEGER
 );
 
 ALTER TABLE guild
@@ -32,11 +33,9 @@ CREATE TABLE monster (
     monstername VARCHAR2(10) NOT NULL,
     health      INTEGER NOT NULL,
     "level"     INTEGER,
-    canevolve   CHAR(1)
+    canevolve   CHAR(1),
+    team_teamid INTEGER NOT NULL
 );
-
---ALTER TABLE monster
- --   ADD CHECK ( canevolve IN ( true, false) );
 
 ALTER TABLE monster ADD CONSTRAINT monster_pk PRIMARY KEY ( monsterid );
 
@@ -47,7 +46,6 @@ CREATE TABLE player (
     "level"       INTEGER,
     timeplayed    INTEGER,
     homeaddress   VARCHAR2(50),
-    team_teamid   INTEGER NOT NULL,
     startdate     DATE,
     lastlogindate DATE
 
@@ -63,27 +61,22 @@ ALTER TABLE player
 
 ALTER TABLE player ADD CONSTRAINT level_larger_then_zero CHECK ( "level" >= 0 );
 
-CREATE UNIQUE INDEX player__idx ON
-   player (
-       team_teamid
-   ASC );
 
 ALTER TABLE player ADD CONSTRAINT player_pk PRIMARY KEY ( playerid );
 
-CREATE TABLE relation_3 (
+CREATE TABLE relation_1(
     player_playerid INTEGER NOT NULL,
     guild_guildid   INTEGER NOT NULL
 );
 
-ALTER TABLE relation_3 ADD CONSTRAINT relation_3_pk PRIMARY KEY ( player_playerid,
+ALTER TABLE relation_1 ADD CONSTRAINT relation_1_pk PRIMARY KEY ( player_playerid,
                                                                   guild_guildid );
 
 CREATE TABLE team (
     teamid             INTEGER NOT NULL,
     teamname           VARCHAR2(15) NOT NULL,
     timeplayedwithteam INTEGER,
-    player_playerid    INTEGER NOT NULL,
-    monster_monsterid  INTEGER NOT NULL
+    player_playerid    INTEGER NOT NULL
 );
 
 CREATE UNIQUE INDEX team__idx ON
@@ -93,17 +86,14 @@ CREATE UNIQUE INDEX team__idx ON
 
 ALTER TABLE team ADD CONSTRAINT team_pk PRIMARY KEY ( teamid );
 
---ALTER TABLE player
- --   ADD CONSTRAINT player_team_fk FOREIGN KEY ( team_teamid )
-  --      REFERENCES team ( teamid );
 
-ALTER TABLE relation_3
-    ADD CONSTRAINT relation_3_player_fk FOREIGN KEY ( player_playerid )
+ALTER TABLE relation_1
+    ADD CONSTRAINT relation_1_player_fk FOREIGN KEY ( player_playerid )
         REFERENCES player ( playerid );
 
-ALTER TABLE team
-    ADD CONSTRAINT team_monster_fk FOREIGN KEY ( monster_monsterid )
-        REFERENCES monster ( monsterid );
+ALTER TABLE monster
+    ADD CONSTRAINT monster_team_fk FOREIGN KEY (team_teamid)
+        REFERENCES team ( teamid );
 
 ALTER TABLE team
     ADD CONSTRAINT team_player_fk FOREIGN KEY ( player_playerid )
