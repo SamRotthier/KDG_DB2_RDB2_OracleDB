@@ -59,7 +59,7 @@ ALTER TABLE player ADD CONSTRAINT name_start_capital CHECK (name= INITCAP(name))
 ALTER TABLE player
     ADD CONSTRAINT min_name_length CHECK (LENGTHB(name) >= 3);
 
-ALTER TABLE player ADD CONSTRAINT level_larger_then_zero CHECK ( "level" >= 0 );
+ALTER TABLE player ADD CONSTRAINT level_larger_then_zero CHECK ( "level" > 0 );
 
 
 ALTER TABLE player ADD CONSTRAINT player_pk PRIMARY KEY ( playerid );

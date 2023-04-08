@@ -21,3 +21,10 @@ SELECT PLAYER_PLAYERID,player.name,GUILD_GUILDID,guild.guildname FROM RELATION_1
 JOIN player on player.playerid = PLAYER_PLAYERID
 JOIN guild on guild.guildid = GUILD_GUILDID
 ORDER BY PLAYER_PLAYERID desc;
+
+SELECT playerid,name,guild.guildid,guild.guildname, team.teamid, team.teamname, monster.monsterid,monster.monstername FROM player
+JOIN team on team.player_playerid = player.playerid
+JOIN monster on monster.team_teamid = team.teamid
+JOIN relation_1 on player.playerid = relation_1.PLAYER_PLAYERID
+JOIN guild on guild.guildid = relation_1.GUILD_GUILDID
+ORDER BY playerid asc;
