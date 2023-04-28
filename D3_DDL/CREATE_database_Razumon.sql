@@ -11,12 +11,12 @@ DROP TABLE relation_1 CASCADE CONSTRAINTS;
 
 
 CREATE TABLE guild (
-    guildid    INTEGER NOT NULL,
-    guildname  VARCHAR2(25) NOT NULL,
-    guildskill VARCHAR2(15),
-    madeon     DATE NOT NULL,
-    "level"    INTEGER,
-    madeby     INTEGER
+                       guildid    INTEGER NOT NULL,
+                       guildname  VARCHAR2(25) NOT NULL,
+                       guildskill VARCHAR2(15),
+                       madeon     DATE NOT NULL,
+                       "level"    INTEGER,
+                       madeby     INTEGER
 );
 
 ALTER TABLE guild
@@ -24,30 +24,30 @@ ALTER TABLE guild
 
 ALTER TABLE guild
     ADD CONSTRAINT max_level CHECK ( "level" > 0
-                                     AND "level" < 100 );
+        AND "level" < 100 );
 
 ALTER TABLE guild ADD CONSTRAINT guild_pk PRIMARY KEY ( guildid );
 
 CREATE TABLE monster (
-    monsterid   INTEGER NOT NULL,
-    monstername VARCHAR2(10) NOT NULL,
-    health      INTEGER NOT NULL,
-    "level"     INTEGER,
-    canevolve   CHAR(1),
-    team_teamid INTEGER NOT NULL
+                         monsterid   INTEGER NOT NULL,
+                         monstername VARCHAR2(10) NOT NULL,
+                         health      INTEGER NOT NULL,
+                         "level"     INTEGER,
+                         canevolve   CHAR(1),
+                         team_teamid INTEGER NOT NULL
 );
 
 ALTER TABLE monster ADD CONSTRAINT monster_pk PRIMARY KEY ( monsterid );
 
 CREATE TABLE player (
-    playerid      INTEGER NOT NULL,
-    name          VARCHAR2(30) NOT NULL,
-    gender        VARCHAR2(10),
-    "level"       INTEGER,
-    timeplayed    INTEGER,
-    homeaddress   VARCHAR2(50),
-    startdate     DATE,
-    lastlogindate DATE
+                        playerid      INTEGER NOT NULL,
+                        name          VARCHAR2(30) NOT NULL,
+                        gender        VARCHAR2(10),
+                        "level"       INTEGER,
+                        timeplayed    INTEGER,
+                        homeaddress   VARCHAR2(50),
+                        startdate     DATE,
+                        lastlogindate DATE
 
 );
 
@@ -65,24 +65,24 @@ ALTER TABLE player ADD CONSTRAINT level_larger_then_zero CHECK ( "level" > 0 );
 ALTER TABLE player ADD CONSTRAINT player_pk PRIMARY KEY ( playerid );
 
 CREATE TABLE relation_1(
-    player_playerid INTEGER NOT NULL,
-    guild_guildid   INTEGER NOT NULL
+                           player_playerid INTEGER NOT NULL,
+                           guild_guildid   INTEGER NOT NULL
 );
 
 ALTER TABLE relation_1 ADD CONSTRAINT relation_1_pk PRIMARY KEY ( player_playerid,
                                                                   guild_guildid );
 
 CREATE TABLE team (
-    teamid             INTEGER NOT NULL,
-    teamname           VARCHAR2(15) NOT NULL,
-    timeplayedwithteam INTEGER,
-    player_playerid    INTEGER NOT NULL
+                      teamid             INTEGER NOT NULL,
+                      teamname           VARCHAR2(15) NOT NULL,
+                      timeplayedwithteam INTEGER,
+                      player_playerid    INTEGER NOT NULL
 );
 
 CREATE UNIQUE INDEX team__idx ON
     team (
-        player_playerid
-    ASC );
+          player_playerid
+          ASC );
 
 ALTER TABLE team ADD CONSTRAINT team_pk PRIMARY KEY ( teamid );
 

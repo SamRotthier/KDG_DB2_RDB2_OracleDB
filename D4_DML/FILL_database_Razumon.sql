@@ -21,7 +21,7 @@ INSERT INTO player(playerid,name,gender,"level",timeplayed,homeaddress,startdate
 VALUES (playerid_seq.nextval,'Sam','Male',10,5,'randomstraat10',DATE '2020-11-04',DATE '2023-04-05');
 
 INSERT INTO player(playerid,name,gender,"level",timeplayed,homeaddress,startdate,lastlogindate)
-VALUES (playerid_seq.nextval,'Elise','Female',20,10,'randomstraat15',DATE '2019-05-21',DATE '2020-03-15');
+VALUES (playerid_seq.nextval,'Elyse','Female',20,10,'randomstraat15',DATE '2019-05-21',DATE '2020-03-15');
 
 INSERT INTO player(playerid,name,gender,"level",timeplayed,homeaddress,startdate,lastlogindate)
 VALUES (playerid_seq.nextval,'Pascal', 'Male',50,100,'randomstraat20',DATE '2021-01-10',DATE '2022-10-20');
