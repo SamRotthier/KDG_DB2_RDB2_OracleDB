@@ -5,7 +5,7 @@ truncate table monster;
 truncate table team;
 truncate table player;
 
-DROP SEQUENCE monsterid_seq;
+DROP SEQUENCE  monsterid_seq;
 DROP SEQUENCE  playerid_seq;
 DROP SEQUENCE  teamid_seq;
 DROP SEQUENCE  guildid_seq;
@@ -17,9 +17,10 @@ CREATE SEQUENCE playerid_seq
     NOCYCLE;
 
 --Inserting the values of the player table
+--INSERT INTO player(name,gender,"level",timeplayed,homeaddress,startdate,lastlogindate)
+--VALUES ('Sam','Male',10,5,'randomstraat10',DATE '2020-11-04',DATE '2023-04-05');
 INSERT INTO player(playerid,name,gender,"level",timeplayed,homeaddress,startdate,lastlogindate)
 VALUES (playerid_seq.nextval,'Sam','Male',10,5,'randomstraat10',DATE '2020-11-04',DATE '2023-04-05');
-
 INSERT INTO player(playerid,name,gender,"level",timeplayed,homeaddress,startdate,lastlogindate)
 VALUES (playerid_seq.nextval,'Elyse','Female',20,10,'randomstraat15',DATE '2019-05-21',DATE '2020-03-15');
 
@@ -37,9 +38,11 @@ COMMIT;
 CREATE SEQUENCE guildid_seq
     START WITH 1 INCREMENT BY   1
     NOCACHE
- NOCYCLE;
+NOCYCLE;
 
  --Inserting the values of the guild table
+--INSERT INTO guild (guildname,guildskill,madeon,"level",madeby )
+--VALUES ('Killers','Farming',DATE '2022-10-04',10,(SELECT playerid FROM player WHERE name = 'Sam'));
 INSERT INTO guild (guildid,guildname,guildskill,madeon,"level",madeby )
 VALUES (guildid_seq.nextval,'Killers','Farming',DATE '2022-10-04',10,(SELECT playerid FROM player WHERE name = 'Sam'));
 
@@ -63,6 +66,8 @@ COMMIT;
  NOCYCLE;
 
  --Inserting the values of the team table
+--INSERT INTO team(teamname,timeplayedwithteam,player_playerid)
+--VALUES ('BestTeam',10,(SELECT playerid FROM player WHERE name = 'Sam'));
 INSERT INTO team(teamid,teamname,timeplayedwithteam,player_playerid)
 VALUES (teamid_seq.nextval,'BestTeam',10,(SELECT playerid FROM player WHERE name = 'Sam'));
 
@@ -87,6 +92,8 @@ CREATE SEQUENCE monsterid_seq
     NOCYCLE;
 
 --Inserting the values of the monster table
+--INSERT INTO monster( monstername, health, "level",canevolve,team_teamid)
+--VALUES ('Bob',100,5,'f',(SELECT teamid FROM team WHERE teamname = 'BestTeam'));
 INSERT INTO monster(monsterid, monstername, health, "level",canevolve,team_teamid)
 VALUES (monsterid_seq.nextval,'Bob',100,5,'f',(SELECT teamid FROM team WHERE teamname = 'NumberOnes'));
 INSERT INTO monster(monsterid, monstername, health, "level",canevolve,team_teamid)

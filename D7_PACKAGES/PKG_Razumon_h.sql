@@ -1,7 +1,6 @@
 CREATE OR REPLACE PACKAGE PKG_Razumon
 AS
 
-
     PROCEDURE empty_tables;
 
     PROCEDURE add_player(
@@ -20,17 +19,26 @@ AS
         p_madeon guild.madeon%TYPE,
         p_level guild."level"%TYPE,
         p_madeby guild.madeby%TYPE
+
+    );
+
+    PROCEDURE add_relation(
+        p_guildname guild.guildname%TYPE,
+        p_name player.name%TYPE
     );
 
     PROCEDURE add_team(
         p_teamname team.teamname%TYPE,
-        p_timeplayedwithteam team.timeplayedwithteam%TYPE
+        p_timeplayedwithteam team.timeplayedwithteam%TYPE,
+        p_name player.name%TYPE
     );
 
     PROCEDURE add_monster(
         p_monstername monster.monstername%TYPE,
         p_health monster.health%TYPE,
         p_level monster."level"%TYPE,
-        p_canevolve monster.canevolve%TYPE
+        p_canevolve monster.canevolve%TYPE,
+        p_teamname team.teamname%TYPE
     );
+
 END PKG_Razumon;

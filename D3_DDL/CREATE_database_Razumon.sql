@@ -12,6 +12,7 @@ DROP TABLE relation_1 CASCADE CONSTRAINTS;
 
 CREATE TABLE guild (
                        guildid    INTEGER NOT NULL,
+                       --guildid    INTEGER GENERATED ALWAYS AS IDENTITY,
                        guildname  VARCHAR2(25) NOT NULL,
                        guildskill VARCHAR2(15),
                        madeon     DATE NOT NULL,
@@ -30,6 +31,7 @@ ALTER TABLE guild ADD CONSTRAINT guild_pk PRIMARY KEY ( guildid );
 
 CREATE TABLE monster (
                          monsterid   INTEGER NOT NULL,
+                         --monsterid   INTEGER GENERATED ALWAYS AS IDENTITY,
                          monstername VARCHAR2(10) NOT NULL,
                          health      INTEGER NOT NULL,
                          "level"     INTEGER,
@@ -41,6 +43,7 @@ ALTER TABLE monster ADD CONSTRAINT monster_pk PRIMARY KEY ( monsterid );
 
 CREATE TABLE player (
                         playerid      INTEGER NOT NULL,
+                        --playerid      INTEGER GENERATED ALWAYS AS IDENTITY,
                         name          VARCHAR2(30) NOT NULL,
                         gender        VARCHAR2(10),
                         "level"       INTEGER,
@@ -74,6 +77,7 @@ ALTER TABLE relation_1 ADD CONSTRAINT relation_1_pk PRIMARY KEY ( player_playeri
 
 CREATE TABLE team (
                       teamid             INTEGER NOT NULL,
+                      --teamid             INTEGER GENERATED ALWAYS AS IDENTITY,
                       teamname           VARCHAR2(15) NOT NULL,
                       timeplayedwithteam INTEGER,
                       player_playerid    INTEGER NOT NULL
