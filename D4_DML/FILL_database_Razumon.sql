@@ -1,3 +1,5 @@
+--Fill werkt enkel met de V1 van de create database (komt door sequences dat achteraf problemen gaven bij
+--de packages)
 --Clearing the tables
 truncate table  RELATION_1;
 truncate table  guild;
@@ -75,7 +77,7 @@ INSERT INTO team(teamid,teamname,timeplayedwithteam,player_playerid)
 VALUES (teamid_seq.nextval,'NumberOnes',50,(SELECT playerid FROM player WHERE name = 'Pascal'));
 
 INSERT INTO team(teamid,teamname,timeplayedwithteam,player_playerid)
-VALUES (teamid_seq.nextval,'GreatestOfAll',5,(SELECT playerid FROM player WHERE name = 'Elise'));
+VALUES (teamid_seq.nextval,'GreatestOfAll',5,(SELECT playerid FROM player WHERE name = 'Elyse'));
 
 INSERT INTO team(teamid,teamname,timeplayedwithteam,player_playerid)
 VALUES (teamid_seq.nextval,'NotATeam',15,(SELECT playerid FROM player WHERE name = 'Jasper'));

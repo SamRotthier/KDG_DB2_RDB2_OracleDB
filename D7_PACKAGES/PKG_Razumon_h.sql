@@ -18,8 +18,7 @@ AS
         p_guildskill guild.guildskill%TYPE,
         p_madeon guild.madeon%TYPE,
         p_level guild."level"%TYPE,
-        p_madeby guild.madeby%TYPE
-
+        p_name player.name%TYPE
     );
 
     PROCEDURE add_relation(

@@ -1,4 +1,4 @@
---Fill werkt met deze create
+
 --Dropping tables
 DROP TABLE guild cascade constraints;
 DROP TABLE monster cascade constraints;
@@ -11,8 +11,7 @@ DROP TABLE relation_1 CASCADE CONSTRAINTS;
 
 
 CREATE TABLE guild (
-                       guildid    INTEGER NOT NULL,
-                       --guildid    INTEGER GENERATED ALWAYS AS IDENTITY,
+                       guildid    INTEGER GENERATED ALWAYS AS IDENTITY,
                        guildname  VARCHAR2(25) NOT NULL,
                        guildskill VARCHAR2(15),
                        madeon     DATE NOT NULL,
@@ -22,7 +21,7 @@ CREATE TABLE guild (
 
 ALTER TABLE guild
     ADD CHECK ( guildskill IN ( 'Building', 'Crafting', 'Farming', 'Hunting', 'Mining' ) );
-
+§
 ALTER TABLE guild
     ADD CONSTRAINT max_level CHECK ( "level" > 0
         AND "level" < 100 );
@@ -30,8 +29,7 @@ ALTER TABLE guild
 ALTER TABLE guild ADD CONSTRAINT guild_pk PRIMARY KEY ( guildid );
 
 CREATE TABLE monster (
-                         monsterid   INTEGER NOT NULL,
-                         --monsterid   INTEGER GENERATED ALWAYS AS IDENTITY,
+                         monsterid   INTEGER GENERATED ALWAYS AS IDENTITY,
                          monstername VARCHAR2(10) NOT NULL,
                          health      INTEGER NOT NULL,
                          "level"     INTEGER,
@@ -42,8 +40,7 @@ CREATE TABLE monster (
 ALTER TABLE monster ADD CONSTRAINT monster_pk PRIMARY KEY ( monsterid );
 
 CREATE TABLE player (
-                        playerid      INTEGER NOT NULL,
-                        --playerid      INTEGER GENERATED ALWAYS AS IDENTITY,
+                        playerid      INTEGER GENERATED ALWAYS AS IDENTITY,
                         name          VARCHAR2(30) NOT NULL,
                         gender        VARCHAR2(10),
                         "level"       INTEGER,
@@ -76,8 +73,7 @@ ALTER TABLE relation_1 ADD CONSTRAINT relation_1_pk PRIMARY KEY ( player_playeri
                                                                   guild_guildid );
 
 CREATE TABLE team (
-                      teamid             INTEGER NOT NULL,
-                      --teamid             INTEGER GENERATED ALWAYS AS IDENTITY,
+                      teamid   INTEGER GENERATED ALWAYS AS IDENTITY,
                       teamname           VARCHAR2(15) NOT NULL,
                       timeplayedwithteam INTEGER,
                       player_playerid    INTEGER NOT NULL
@@ -102,6 +98,3 @@ ALTER TABLE monster
 ALTER TABLE team
     ADD CONSTRAINT team_player_fk FOREIGN KEY ( player_playerid )
         REFERENCES player ( playerid );
-
-
-
