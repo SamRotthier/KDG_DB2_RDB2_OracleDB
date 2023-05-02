@@ -37,5 +37,4 @@ BEGIN
   PKG_Razumon.add_monster('R2-D2',999,99,'t','BestTeam');
   PKG_Razumon.add_monster('C3-PO',200,50,'f','NotATeam');
   PKG_Razumon.add_monster('Yoda',75,15,'f','Test');
-
 END;
