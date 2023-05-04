@@ -21,7 +21,7 @@ CREATE TABLE guild (
 
 ALTER TABLE guild
     ADD CHECK ( guildskill IN ( 'Building', 'Crafting', 'Farming', 'Hunting', 'Mining' ) );
-§
+
 ALTER TABLE guild
     ADD CONSTRAINT max_level CHECK ( "level" > 0
         AND "level" < 100 );
@@ -65,12 +65,12 @@ ALTER TABLE player ADD CONSTRAINT level_larger_then_zero CHECK ( "level" > 0 );
 ALTER TABLE player ADD CONSTRAINT player_pk PRIMARY KEY ( playerid );
 
 CREATE TABLE relation_1(
+                           relationid   INTEGER GENERATED ALWAYS AS IDENTITY,
                            player_playerid INTEGER NOT NULL,
                            guild_guildid   INTEGER NOT NULL
 );
 
-ALTER TABLE relation_1 ADD CONSTRAINT relation_1_pk PRIMARY KEY ( player_playerid,
-                                                                  guild_guildid );
+ALTER TABLE relation_1 ADD CONSTRAINT relation_1_pk PRIMARY KEY (relationid );
 
 CREATE TABLE team (
                       teamid   INTEGER GENERATED ALWAYS AS IDENTITY,
@@ -79,10 +79,7 @@ CREATE TABLE team (
                       player_playerid    INTEGER NOT NULL
 );
 
-CREATE UNIQUE INDEX team__idx ON
-    team (
-          player_playerid
-          ASC );
+--CREATE UNIQUE INDEX team__idx ON team (player_playerid ASC );
 
 ALTER TABLE team ADD CONSTRAINT team_pk PRIMARY KEY ( teamid );
 

@@ -14,7 +14,7 @@ Milestone 3: Creatie Databank
 
       Table Counts
 ---
-![Table counts](./screenshots/table_count.PNG)
+![Table counts](screenshots_M4/table_count.PNG)
 
     @query 1: Relatie Veel-op-veel
 
@@ -22,7 +22,7 @@ SELECT PLAYER_PLAYERID,player.name,GUILD_GUILDID,guild.guildname FROM RELATION_1
 JOIN player on player.playerid = PLAYER_PLAYERID
 JOIN guild on guild.guildid = GUILD_GUILDID;
 --- 
-![query 1: Relatie Veel-op-veel](./screenshots/veel_op_veel.PNG)
+![query 1: Relatie Veel-op-veel](screenshots_M4/veel_op_veel.PNG)
 
 
 
@@ -32,7 +32,7 @@ SELECT playerid, name, team.teamid,team.teamname,monster.monsterid,monster.monst
 JOIN team ON team.teamid = player.playerid
 JOIN monster ON monster.monsterid = team.teamid;
 --- 
-![query 2: 2 niveau’s diep](./screenshots/2_niveaus_diep.PNG)
+![query 2: 2 niveau’s diep](screenshots_M4/2_niveaus_diep.PNG)
 
     @query 3: player_all
 
@@ -43,7 +43,7 @@ JOIN relation_1 on player.playerid = relation_1.PLAYER_PLAYERID
 JOIN guild on guild.guildid = relation_1.GUILD_GUILDID
 ORDER BY playerid asc;
 --- 
-![query 3: player locations](./screenshots/player_all.PNG)
+![query 3: player locations](screenshots_M4/player_all.PNG)
 
 
   Bewijs Domeinen - constraints M2
@@ -51,20 +51,20 @@ ORDER BY playerid asc;
     Player: Start with capital and is 3 long
 
 ---
-![Bewijs Capital](./screenshots/NAME_START_CAPITAL.PNG)
-![Bewijs Min Length](./screenshots/MIN_NAME_LENGTH.PNG)
+![Bewijs Capital](screenshots_M4/NAME_START_CAPITAL.PNG)
+![Bewijs Min Length](screenshots_M4/MIN_NAME_LENGTH.PNG)
 
     Player: level larger then 0
 
 ---
-![Bewijs larger then 0](./screenshots/LEVEL_LARGER_THEN_ZERO.PNG)
+![Bewijs larger then 0](screenshots_M4/LEVEL_LARGER_THEN_ZERO.PNG)
 
 
     guild: level between 0 and 100
 
 ---
 
-![Bewijs level](./screenshots/MAX_LEVEL_1.PNG)
-![Bewijs level](./screenshots/MAX_LEVEL_2.PNG)
+![Bewijs level](screenshots_M4/MAX_LEVEL_1.PNG)
+![Bewijs level](screenshots_M4/MAX_LEVEL_2.PNG)
 
 

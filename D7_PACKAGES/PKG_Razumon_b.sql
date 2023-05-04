@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY PKG_Razumon
 AS
 
-    -- Private
+    -- Private M4
     -- Lookup functions
     -- lookup playerid
     FUNCTION lookup_playerid
@@ -68,8 +68,116 @@ AS
         RETURN lu_monster_id;
     END lookup_monsterid;
 
-    -- Public
+        -- Private M5
+    FUNCTION random_number(
+    p_min IN NUMBER,
+    p_max IN NUMBER)
+        RETURN NUMBER
+        AS
+    BEGIN
+        RETURN TRUNC(dbms_random.VALUE(p_min, p_max));
+    END random_number;
 
+    FUNCTION random_date(
+    p_from IN DATE,
+    p_to IN DATE)
+        RETURN DATE
+        AS
+        lu_range    NUMBER;
+        lu_datepick NUMBER;
+    BEGIN
+        lu_range := p_to - p_from;
+        lu_datepick := random_number(0, lu_range);
+        RETURN p_from + lu_datepick;
+    END random_date;
+
+    FUNCTION random_gender
+        RETURN player.gender%TYPE
+        IS
+        TYPE type_varray_type IS VARRAY(3) OF VARCHAR2(10);
+        t_type type_varray_type := type_varray_type('Male', 'Female', 'Other');
+    BEGIN
+        RETURN t_type(random_number(1, t_type.COUNT));
+    END random_gender;
+
+    FUNCTION random_guildskill
+        RETURN guild.GUILDSKILL%TYPE
+        IS
+        TYPE type_varray_type IS VARRAY(5) OF VARCHAR2(20);
+        t_type type_varray_type := type_varray_type('Building', 'Crafting', 'Farming', 'Hunting', 'Mining');
+    BEGIN
+        RETURN t_type(random_number(1, t_type.COUNT));
+    END random_guildskill;
+
+    FUNCTION lookup_playercount
+        RETURN INTEGER
+    AS
+        TYPE t_playerid IS TABLE OF PLAYER.playerid%TYPE;
+        v_playerid t_playerid;
+
+    BEGIN
+        SELECT playerid BULK COLLECT INTO v_playerid FROM player;
+        dbms_output.put_line(v_playerid.COUNT);
+
+
+        RETURN v_playerid.COUNT;
+    END lookup_playercount;
+
+    FUNCTION random_playerid
+        RETURN INTEGER
+    AS
+        TYPE t_playerid IS TABLE OF PLAYER.playerid%TYPE;
+        v_playerid t_playerid;
+
+    BEGIN
+        SELECT playerid BULK COLLECT INTO v_playerid FROM player;
+
+        RETURN v_playerid(random_number(1, v_playerid.COUNT));
+    END random_playerid;
+
+    FUNCTION random_playername
+        RETURN STRING
+    AS
+        TYPE t_playernames IS TABLE OF PLAYER.name%TYPE;
+        v_playernames t_playernames;
+        v_playername PLAYER.name%TYPE;
+
+    BEGIN
+        SELECT name BULK COLLECT INTO v_playernames FROM player;
+        v_playername := random_number(1,v_playernames.COUNT);
+
+        RETURN v_playernames(v_playername);
+    END random_playername;
+
+    FUNCTION random_guildid
+        RETURN INTEGER
+    AS
+        TYPE t_guildid IS TABLE OF guild.guildid%TYPE;
+        v_guildid t_guildid;
+
+    BEGIN
+        SELECT playerid BULK COLLECT INTO v_guildid FROM player;
+
+        RETURN v_guildid(random_number(1, v_guildid.COUNT));
+    END random_guildid;
+
+    FUNCTION random_guildname
+        RETURN STRING
+    AS
+        TYPE t_guildnames IS TABLE OF guild.guildname%TYPE;
+        v_guildnames t_guildnames;
+        v_guildname guild.guildname%TYPE;
+
+    BEGIN
+        dbms_output.put_line('Start random guild');
+        SELECT guildname BULK COLLECT INTO v_guildnames FROM guild;
+        dbms_output.put_line(v_guildnames.COUNT);
+        v_guildname := random_number(1,v_guildnames.COUNT);
+
+        RETURN v_guildnames(v_guildname);
+    END random_guildname;
+
+    -- Public M4
     -- Empty tables
     PROCEDURE empty_tables
     AS
@@ -92,6 +200,7 @@ AS
         --EXECUTE IMMEDIATE 'DROP SEQUENCE  monsterid_seq';
         --EXECUTE IMMEDIATE 'CREATE SEQUENCE teamid_seq START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE';
             --V2:
+        EXECUTE IMMEDIATE 'ALTER TABLE PROJECT.RELATION_1 MODIFY relationid GENERATED ALWAYS AS IDENTITY(START WITH 1)';
        EXECUTE IMMEDIATE 'ALTER TABLE player MODIFY playerid GENERATED ALWAYS AS IDENTITY(START WITH 1)';
        EXECUTE IMMEDIATE 'ALTER TABLE guild MODIFY guildid GENERATED ALWAYS AS IDENTITY(START WITH 1)';
        EXECUTE IMMEDIATE 'ALTER TABLE team MODIFY teamid GENERATED ALWAYS AS IDENTITY(START WITH 1)';
@@ -144,7 +253,6 @@ AS
     BEGIN
         p_playerid := lookup_playerid(p_name);
         INSERT INTO guild(
-            --guildid,
             guildname,
             guildskill,
             madeon,
@@ -170,6 +278,7 @@ AS
         p_guildid guild.guildid%TYPE;
         p_playerid player.playerid%TYPE;
     BEGIN
+        dbms_output.put_line('Start adding');
         p_guildid := lookup_guildid(p_guildname);
         p_playerid := lookup_playerid(p_name);
         INSERT INTO RELATION_1(
@@ -194,7 +303,6 @@ AS
     BEGIN
         p_playerid := lookup_playerid(p_name);
         INSERT INTO team(
-            --teamid,
             teamname,
             timeplayedwithteam,
             player_playerid
@@ -236,4 +344,116 @@ AS
                );
         COMMIT;
     END  add_monster;
+
+        -- public M5
+    PROCEDURE generate_random_player(
+      p_amount IN NUMBER DEFAULT 1
+    )
+    AS
+        v_name player.name%TYPE;
+        v_gender player.gender%TYPE;
+        v_level player."level"%TYPE;
+        v_timeplayed player.timeplayed%TYPE;
+        v_homeaddress player.homeaddress%TYPE;
+        v_startdate player.startdate%TYPE;
+        v_lastlogindate player.lastlogindate%TYPE;
+
+    BEGIN
+        FOR i IN 1 .. p_amount
+        LOOP
+                v_name := 'Player' || i;
+                v_gender := random_gender();
+                v_level := random_number(1,100);
+                v_timeplayed := random_number(1,1000) ;
+                v_homeaddress := 'Random address ' || i;
+                v_startdate :=random_date(TO_DATE('01-01-1990', 'DD-MM-YYYY'),SYSDATE);
+                v_lastlogindate :=random_date(v_startdate,SYSDATE);
+
+     add_player(v_name,
+                v_gender,
+                v_level,
+                v_timeplayed,
+                v_homeaddress,
+                v_startdate,
+                v_lastlogindate);
+            END LOOP;
+    END generate_random_player;
+
+    PROCEDURE generate_random_guild(
+        p_amount IN NUMBER DEFAULT 1
+    )
+    AS
+        v_guildname guild.guildname%TYPE;
+        v_guildskill guild.guildskill%TYPE;
+        v_madeon guild.madeon%TYPE;
+        v_level guild."level"%TYPE;
+        v_name player.name%TYPE;
+
+    BEGIN
+        FOR i IN 1 .. p_amount
+            LOOP
+                v_guildname := 'Guild' || i ;
+                --dbms_output.put_line(v_guildname);
+                v_guildskill := random_guildskill();
+                --dbms_output.put_line(v_guildskill);
+                v_madeon :=random_date(TO_DATE('01-01-1990', 'DD-MM-YYYY'),SYSDATE);
+                --dbms_output.put_line(v_madeon);
+                v_level := random_number(1,50);
+                --dbms_output.put_line(v_level);
+                v_name := random_playername();
+                --dbms_output.put_line(v_name);
+
+                add_guild(v_guildname,
+                v_guildskill,
+                v_madeon,
+                v_level,
+                v_name);
+            END LOOP;
+    END generate_random_guild;
+
+
+    PROCEDURE generate_random_relation(
+        p_amount IN NUMBER DEFAULT 1
+    )
+    AS
+        v_guildname guild.guildname%TYPE;
+        v_playername player.name%TYPE;
+
+    BEGIN
+        FOR i IN 1 .. p_amount
+            LOOP
+                dbms_output.put_line('Start');
+                v_guildname := random_guildname();
+                dbms_output.put_line(v_guildname);
+                v_playername := random_playername();
+                dbms_output.put_line(v_playername);
+
+                add_relation(v_guildname,
+                             v_playername);
+            END LOOP;
+    END generate_random_relation;
+
+    PROCEDURE generate_random_team(
+        p_amount IN NUMBER DEFAULT 1
+    )
+    AS
+        v_teamname team.teamname%TYPE;
+        v_timeplayedwithteam team.timeplayedwithteam%TYPE;
+        v_name player.name%TYPE;
+
+    BEGIN
+        FOR i IN 1 .. p_amount
+            LOOP
+                v_teamname := 'Team' || i ;
+                --dbms_output.put_line(v_guildname);
+                v_timeplayedwithteam := random_number(1,50);
+                --dbms_output.put_line(v_level);
+                v_name := random_playername();
+                --dbms_output.put_line(v_name);
+
+                add_team(  v_teamname,
+                            v_timeplayedwithteam ,
+                            v_name);
+            END LOOP;
+    END generate_random_team;
 END PKG_Razumon;

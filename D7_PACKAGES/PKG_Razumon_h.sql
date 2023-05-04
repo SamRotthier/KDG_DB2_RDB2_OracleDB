@@ -1,6 +1,7 @@
 CREATE OR REPLACE PACKAGE PKG_Razumon
 AS
 
+    --M4
     PROCEDURE empty_tables;
 
     PROCEDURE add_player(
@@ -38,6 +39,23 @@ AS
         p_level monster."level"%TYPE,
         p_canevolve monster.canevolve%TYPE,
         p_teamname team.teamname%TYPE
+    );
+
+        --M5
+    PROCEDURE generate_random_player(
+        p_amount IN NUMBER DEFAULT 1
+    );
+
+    PROCEDURE generate_random_guild(
+        p_amount IN NUMBER DEFAULT 1
+    );
+
+    PROCEDURE generate_random_relation(
+        p_amount IN NUMBER DEFAULT 1
+    );
+
+    PROCEDURE generate_random_team(
+        p_amount IN NUMBER DEFAULT 1
     );
 
 END PKG_Razumon;
