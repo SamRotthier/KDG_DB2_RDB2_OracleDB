@@ -38,9 +38,12 @@ BEGIN
 -- PKG_Razumon.add_monster('C3-PO',200,50,'f','NotATeam');
 -- PKG_Razumon.add_monster('Yoda',75,15,'f','Test');
 
-    PKG_RAZUMON.generate_random_player(20);
-    PKG_RAZUMON.generate_random_guild(20);
-    PKG_RAZUMON.generate_random_relation(50);
-    PKG_RAZUMON.generate_random_team(40);
-    PKG_RAZUMON.generate_random_monster(50);
+-- PKG_RAZUMON.generate_random_player(20);
+-- PKG_RAZUMON.generate_random_guild(20);
+-- PKG_RAZUMON.generate_random_relation(50);
+-- PKG_RAZUMON.generate_random_team(40);
+-- PKG_RAZUMON.generate_random_monster(50);
+   PKG_RAZUMON.bewijs_milestone_5();
+   PKG_RAZUMON.genereer_Veel_op_Veel( 20, 20, 50);
+   PKG_RAZUMON.genereer_2_levels(20,40,50);
 END;

@@ -61,12 +61,24 @@ AS
     PROCEDURE generate_random_monster(
         p_amount IN NUMBER DEFAULT 1
     );
+    PROCEDURE generate_teams_each_player(
+        p_amount IN NUMBER DEFAULT 1
+    );
+    PROCEDURE generate_monsters_each_team(
+        p_amountmonsters IN NUMBER DEFAULT 1,
+        p_amountteams IN NUMBER DEFAULT 1
+    );
 
-    PROCEDURE generate_many_to_many(
+
+    PROCEDURE genereer_Veel_op_Veel(
         p_amountplayers IN NUMBER DEFAULT 1,
         p_amountguilds IN NUMBER DEFAULT 1,
-        p_amountrelations IN NUMBER DEFAULT 1,
+        p_amountrelations IN NUMBER DEFAULT 1
+    );
+    PROCEDURE genereer_2_levels(
+        p_amountplayers IN NUMBER DEFAULT 1,
         p_amountteams IN NUMBER DEFAULT 1,
         p_amountmonsters IN NUMBER DEFAULT 1
     );
+    PROCEDURE bewijs_milestone_5;
 END PKG_Razumon;

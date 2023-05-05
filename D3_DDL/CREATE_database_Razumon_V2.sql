@@ -30,7 +30,7 @@ ALTER TABLE guild ADD CONSTRAINT guild_pk PRIMARY KEY ( guildid );
 
 CREATE TABLE monster (
                          monsterid   INTEGER GENERATED ALWAYS AS IDENTITY,
-                         monstername VARCHAR2(10) NOT NULL,
+                         monstername VARCHAR2(500) NOT NULL,
                          health      INTEGER NOT NULL,
                          "level"     INTEGER,
                          canevolve   CHAR(1),
@@ -41,7 +41,7 @@ ALTER TABLE monster ADD CONSTRAINT monster_pk PRIMARY KEY ( monsterid );
 
 CREATE TABLE player (
                         playerid      INTEGER GENERATED ALWAYS AS IDENTITY,
-                        name          VARCHAR2(30) NOT NULL,
+                        name          VARCHAR2(500) NOT NULL,
                         gender        VARCHAR2(10),
                         "level"       INTEGER,
                         timeplayed    INTEGER,
@@ -74,7 +74,7 @@ ALTER TABLE relation_1 ADD CONSTRAINT relation_1_pk PRIMARY KEY (relationid );
 
 CREATE TABLE team (
                       teamid   INTEGER GENERATED ALWAYS AS IDENTITY,
-                      teamname           VARCHAR2(15) NOT NULL,
+                      teamname           VARCHAR2(500) NOT NULL,
                       timeplayedwithteam INTEGER,
                       player_playerid    INTEGER --NOT NULL --NOT NULL for when the players is a lot smaller then the genrated amount teams
 );
