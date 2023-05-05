@@ -58,4 +58,15 @@ AS
         p_amount IN NUMBER DEFAULT 1
     );
 
+    PROCEDURE generate_random_monster(
+        p_amount IN NUMBER DEFAULT 1
+    );
+
+    PROCEDURE generate_many_to_many(
+        p_amountplayers IN NUMBER DEFAULT 1,
+        p_amountguilds IN NUMBER DEFAULT 1,
+        p_amountrelations IN NUMBER DEFAULT 1,
+        p_amountteams IN NUMBER DEFAULT 1,
+        p_amountmonsters IN NUMBER DEFAULT 1
+    );
 END PKG_Razumon;

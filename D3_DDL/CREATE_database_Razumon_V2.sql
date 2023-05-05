@@ -76,10 +76,10 @@ CREATE TABLE team (
                       teamid   INTEGER GENERATED ALWAYS AS IDENTITY,
                       teamname           VARCHAR2(15) NOT NULL,
                       timeplayedwithteam INTEGER,
-                      player_playerid    INTEGER NOT NULL
+                      player_playerid    INTEGER --NOT NULL --NOT NULL for when the players is a lot smaller then the genrated amount teams
 );
 
---CREATE UNIQUE INDEX team__idx ON team (player_playerid ASC );
+--CREATE UNIQUE INDEX team__idx ON team (player_playerid ASC ); -- Uitgezet voor de random creaties uit M5
 
 ALTER TABLE team ADD CONSTRAINT team_pk PRIMARY KEY ( teamid );
 

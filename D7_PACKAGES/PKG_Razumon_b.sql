@@ -15,7 +15,7 @@ AS
         INTO lu_player_id
         FROM player
         WHERE name = p_name;
-        dbms_output.put_line('Test');
+        --dbms_output.put_line('Test');
 
         RETURN lu_player_id;
     END lookup_playerid;
@@ -169,13 +169,41 @@ AS
         v_guildname guild.guildname%TYPE;
 
     BEGIN
-        dbms_output.put_line('Start random guild');
+        --dbms_output.put_line('Start random guild');
         SELECT guildname BULK COLLECT INTO v_guildnames FROM guild;
-        dbms_output.put_line(v_guildnames.COUNT);
+        --dbms_output.put_line(v_guildnames.COUNT);
         v_guildname := random_number(1,v_guildnames.COUNT);
 
         RETURN v_guildnames(v_guildname);
     END random_guildname;
+
+    FUNCTION random_teamname
+        RETURN STRING
+    AS
+        TYPE t_teamnames IS TABLE OF team.teamname%TYPE;
+        v_teamnames t_teamnames;
+        v_teamname team.teamname%TYPE;
+
+    BEGIN
+        SELECT teamname BULK COLLECT INTO v_teamnames FROM team;
+        v_teamname := random_number(1,v_teamnames.COUNT);
+
+        RETURN v_teamnames(v_teamname);
+    END random_teamname;
+
+    FUNCTION random_bool
+        RETURN CHAR
+        IS
+        --v_bool monster.canevolve%TYPE;
+        TYPE type_varray_bool IS VARRAY(2) OF CHAR(1);
+        t_bool type_varray_bool := type_varray_bool('F', 'T');
+    BEGIN
+        --dbms_output.put_line('Start random bool');
+       -- v_bool := random_number(1,t_bool.COUNT);
+        --dbms_output.put_line( v_bool);
+        --dbms_output.put_line( t_bool(v_bool));
+        RETURN t_bool(random_number(1,3));
+    END random_bool;
 
     -- Public M4
     -- Empty tables
@@ -278,7 +306,7 @@ AS
         p_guildid guild.guildid%TYPE;
         p_playerid player.playerid%TYPE;
     BEGIN
-        dbms_output.put_line('Start adding');
+        --dbms_output.put_line('Start adding');
         p_guildid := lookup_guildid(p_guildname);
         p_playerid := lookup_playerid(p_name);
         INSERT INTO RELATION_1(
@@ -359,15 +387,23 @@ AS
         v_lastlogindate player.lastlogindate%TYPE;
 
     BEGIN
+        --dbms_output.put_line('Start generate_random_player');
         FOR i IN 1 .. p_amount
         LOOP
                 v_name := 'Player' || i;
+                --dbms_output.put_line(v_name);
                 v_gender := random_gender();
+                --dbms_output.put_line(v_gender);
                 v_level := random_number(1,100);
+                --dbms_output.put_line(v_level);
                 v_timeplayed := random_number(1,1000) ;
+                --dbms_output.put_line(v_timeplayed);
                 v_homeaddress := 'Random address ' || i;
+                --dbms_output.put_line(v_homeaddress);
                 v_startdate :=random_date(TO_DATE('01-01-1990', 'DD-MM-YYYY'),SYSDATE);
+                --dbms_output.put_line(v_startdate);
                 v_lastlogindate :=random_date(v_startdate,SYSDATE);
+                --dbms_output.put_line(v_lastlogindate);
 
      add_player(v_name,
                 v_gender,
@@ -390,6 +426,7 @@ AS
         v_name player.name%TYPE;
 
     BEGIN
+        --dbms_output.put_line('Start generate_random_guild');
         FOR i IN 1 .. p_amount
             LOOP
                 v_guildname := 'Guild' || i ;
@@ -420,13 +457,14 @@ AS
         v_playername player.name%TYPE;
 
     BEGIN
+        --dbms_output.put_line('Start generate_random_relation');
         FOR i IN 1 .. p_amount
             LOOP
-                dbms_output.put_line('Start');
+
                 v_guildname := random_guildname();
-                dbms_output.put_line(v_guildname);
+                --dbms_output.put_line(v_guildname);
                 v_playername := random_playername();
-                dbms_output.put_line(v_playername);
+                --dbms_output.put_line(v_playername);
 
                 add_relation(v_guildname,
                              v_playername);
@@ -442,6 +480,7 @@ AS
         v_name player.name%TYPE;
 
     BEGIN
+        --dbms_output.put_line('Start generate_random_team');
         FOR i IN 1 .. p_amount
             LOOP
                 v_teamname := 'Team' || i ;
@@ -456,4 +495,70 @@ AS
                             v_name);
             END LOOP;
     END generate_random_team;
+
+    PROCEDURE generate_random_monster(
+        p_amount IN NUMBER DEFAULT 1
+    )
+    AS
+        v_monstername monster.monstername%TYPE;
+        v_health monster.health%TYPE;
+        v_level monster."level"%TYPE;
+        v_canevolve monster.canevolve%TYPE;
+        v_teamname team.teamname%TYPE;
+
+    BEGIN
+        --dbms_output.put_line('Start generate_random_monster');
+        FOR i IN 1 .. p_amount
+            LOOP
+                v_monstername := 'Monster' || i ;
+                --dbms_output.put_line(v_monstername);
+                v_health := random_number(1,250);
+                --dbms_output.put_line(v_health);
+                v_level := random_number(1,100);
+                --dbms_output.put_line(v_level);
+                v_canevolve := random_bool();
+                --dbms_output.put_line(v_canevolve);
+                v_teamname := random_teamname();
+                --dbms_output.put_line(v_teamname);
+
+                add_monster(v_monstername,
+                            v_health,
+                            v_level,
+                            v_canevolve,
+                            v_teamname);
+            END LOOP;
+    END generate_random_monster;
+
+
+
+    PROCEDURE generate_many_to_many(
+        p_amountplayers IN NUMBER DEFAULT 1,
+            p_amountguilds IN NUMBER DEFAULT 1,
+            p_amountrelations IN NUMBER DEFAULT 1,
+            p_amountteams IN NUMBER DEFAULT 1,
+        p_amountmonsters IN NUMBER DEFAULT 1
+    )
+    AS
+    BEGIN
+        --dbms_output.put_line('Start generate_many_to_many');
+        FOR i IN 1 .. p_amount
+            LOOP
+                v_monstername := 'Monster' || i ;
+                --dbms_output.put_line(v_monstername);
+                v_health := random_number(1,250);
+                --dbms_output.put_line(v_health);
+                v_level := random_number(1,100);
+                --dbms_output.put_line(v_level);
+                v_canevolve := random_bool();
+                --dbms_output.put_line(v_canevolve);
+                v_teamname := random_teamname();
+                --dbms_output.put_line(v_teamname);
+
+                add_monster(v_monstername,
+                            v_health,
+                            v_level,
+                            v_canevolve,
+                            v_teamname);
+            END LOOP;
+    END generate_many_to_many;
 END PKG_Razumon;
