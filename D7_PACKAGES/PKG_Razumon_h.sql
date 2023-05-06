@@ -81,4 +81,9 @@ AS
         p_amountmonsters IN NUMBER DEFAULT 1
     );
     PROCEDURE bewijs_milestone_5;
+
+    PROCEDURE printreport_2_levels(
+        p_x IN NUMBER,
+        p_y IN NUMBER,
+        p_z IN NUMBER);
 END PKG_Razumon;

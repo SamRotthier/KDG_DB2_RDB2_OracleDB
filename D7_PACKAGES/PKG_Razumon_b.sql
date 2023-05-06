@@ -675,4 +675,13 @@ AS
 
     END bewijs_milestone_5;
 
+        --M6
+    PROCEDURE printreport_2_levels(
+    p_amountplayers IN NUMBER,
+    p_amountteams IN NUMBER,
+    p_amountmonsters IN NUMBER)
+    IS
+    BEGIN
+        END printreport_2_levels;
+
 END PKG_Razumon;
