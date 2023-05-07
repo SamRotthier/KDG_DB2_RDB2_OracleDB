@@ -659,7 +659,7 @@ AS
         generate_monsters_each_team(p_amountmonsters, p_amountteams);
 
         t2 := SYSTIMESTAMP;
-        dbms_output.put_line('The Duration of generate_many_to_many was ' || TO_CHAR(t2 - t1, 'SSSS.FF'));
+        dbms_output.put_line('The Duration of generate_2_levels was ' || TO_CHAR(t2 - t1, 'SSSS.FF'));
     END genereer_2_levels;
 
     PROCEDURE bewijs_milestone_5
@@ -675,13 +675,64 @@ AS
 
     END bewijs_milestone_5;
 
-        --M6
+    --M6
     PROCEDURE printreport_2_levels(
-    p_amountplayers IN NUMBER,
-    p_amountteams IN NUMBER,
-    p_amountmonsters IN NUMBER)
-    IS
+        p_amountplayers IN NUMBER,
+        p_amountteams IN NUMBER,
+        p_amountmonsters IN NUMBER)
+        IS
+        CURSOR cur_player (p_amountplayers IN NUMBER)
+            IS
+            SELECT p.playerid,
+                   p.name,
+                   AVG(m."level")    AS "Average_monster_level",
+                   AVG(t.timeplayedwithteam) AS "Average_time_played"
+            FROM player p
+            JOIN team t ON p.playerid = t.PLAYER_PLAYERID
+            JOIN monster m ON m.team_teamid = t.teamid
+            GROUP BY p.playerid, p.name;
+
+        CURSOR cur_team (p_amountteams IN NUMBER)
+            IS
+            SELECT t.teamid,
+                   t.teamname,
+                   AVG(t.timeplayedwithteam) AS "Average_time_played_with_team"
+            FROM team t
+            JOIN player p ON p.playerid = t.player_playerid
+            JOIN monster m on m.team_teamid = t.teamid
+            GROUP BY t.teamid, t.teamname;
+
+        CURSOR cur_monster (p_amountmonsters IN NUMBER)
+            IS
+            SELECT m.monsterid,
+                   m.monstername,
+                   AVG(m."level") AS "Average_monster_level"
+            FROM monster m
+            JOIN team t ON t.teamid = m.team_teamid
+        GROUP BY m.monsterid, m.monstername;
     BEGIN
-        END printreport_2_levels;
+
+        FOR c_p in cur_player
+        LOOP
+
+        DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------------');
+        DBMS_OUTPUT.PUT_LINE('PlayerId | Player name | Average monster level | Average time played');
+        DBMS_OUTPUT.PUT_LINE('---------------------------------------------------------------------------------');
+        DBMS_OUTPUT.PUT_LINE(c_p.playerid || ' | ' || c_p.name || ' | ' ||c_p."Average_monster_level"|| ' | ' ||c_p."Average_time_played");
+
+            FOR c_t in cur_team
+            LOOP
+                    DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------------');
+                    DBMS_OUTPUT.PUT_LINE('PlayerId | Player name | Average monster level | Average time played');
+                    DBMS_OUTPUT.PUT_LINE('---------------------------------------------------------------------------------');
+                    DBMS_OUTPUT.PUT_LINE(c_p.playerid || ' | ' || c_p.name || ' | ' ||c_p."Average_monster_level"|| ' | ' ||c_p."Average_time_played");
+
+                    EXIT WHEN cur_team%rowcount >= p_amountteams;
+                END LOOP;
+
+
+        EXIT WHEN cur_player%rowcount >= p_amountplayers;
+        END LOOP;
+    END printreport_2_levels;
 
 END PKG_Razumon;
