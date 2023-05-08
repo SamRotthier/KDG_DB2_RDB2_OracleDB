@@ -681,58 +681,81 @@ AS
         p_amountteams IN NUMBER,
         p_amountmonsters IN NUMBER)
         IS
-        CURSOR cur_player (p_amountplayers IN NUMBER)
+        CURSOR cur_player
             IS
             SELECT p.playerid,
                    p.name,
-                   AVG(m."level")    AS "Average_monster_level",
+                   AVG(m."level")            AS "Average_monster_level",
                    AVG(t.timeplayedwithteam) AS "Average_time_played"
             FROM player p
-            JOIN team t ON p.playerid = t.PLAYER_PLAYERID
-            JOIN monster m ON m.team_teamid = t.teamid
+                     JOIN team t ON p.playerid = t.PLAYER_PLAYERID
+                     JOIN monster m ON m.team_teamid = t.teamid
             GROUP BY p.playerid, p.name;
-
-        CURSOR cur_team (p_amountteams IN NUMBER)
+        CURSOR cur_team (p_playerid IN NUMBER)
             IS
             SELECT t.teamid,
                    t.teamname,
-                   AVG(t.timeplayedwithteam) AS "Average_time_played_with_team"
+                   AVG(m."level") AS "Average_monster_level"
             FROM team t
-            JOIN player p ON p.playerid = t.player_playerid
-            JOIN monster m on m.team_teamid = t.teamid
+                     JOIN player p ON p.playerid = t.player_playerid
+                     JOIN monster m ON m.team_teamid = t.teamid
+            WHERE p.playerid = p_playerid
             GROUP BY t.teamid, t.teamname;
-
-        CURSOR cur_monster (p_amountmonsters IN NUMBER)
+        CURSOR cur_monster (p_teamid IN NUMBER)
             IS
             SELECT m.monsterid,
                    m.monstername,
-                   AVG(m."level") AS "Average_monster_level"
+                   m."level"
+                   --,AVG(m."level") AS "Average_monster_level"
             FROM monster m
-            JOIN team t ON t.teamid = m.team_teamid
-        GROUP BY m.monsterid, m.monstername;
+                     JOIN team t ON t.teamid = m.team_teamid
+            WHERE t.teamid = p_teamid;
+        --GROUP BY m.monsterid, m.monstername;
+
+        e_negative EXCEPTION;
     BEGIN
+        IF p_amountplayers < 0 OR p_amountteams < 0 OR p_amountmonsters < 0
+        THEN
+            RAISE e_negative;
+        END IF;
 
-        FOR c_p in cur_player
-        LOOP
-
-        DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------------');
-        DBMS_OUTPUT.PUT_LINE('PlayerId | Player name | Average monster level | Average time played');
-        DBMS_OUTPUT.PUT_LINE('---------------------------------------------------------------------------------');
-        DBMS_OUTPUT.PUT_LINE(c_p.playerid || ' | ' || c_p.name || ' | ' ||c_p."Average_monster_level"|| ' | ' ||c_p."Average_time_played");
-
-            FOR c_t in cur_team
+        FOR c_p IN cur_player
             LOOP
-                    DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------------');
-                    DBMS_OUTPUT.PUT_LINE('PlayerId | Player name | Average monster level | Average time played');
-                    DBMS_OUTPUT.PUT_LINE('---------------------------------------------------------------------------------');
-                    DBMS_OUTPUT.PUT_LINE(c_p.playerid || ' | ' || c_p.name || ' | ' ||c_p."Average_monster_level"|| ' | ' ||c_p."Average_time_played");
 
-                    EXIT WHEN cur_team%rowcount >= p_amountteams;
-                END LOOP;
+                DBMS_OUTPUT.PUT_LINE('--------------------------------------------------------------------------------');
+                DBMS_OUTPUT.PUT_LINE('PlayerId | Player name | Average monster level | Average time played');
+                DBMS_OUTPUT.PUT_LINE('---------------------------------------------------------------------------------');
+                DBMS_OUTPUT.PUT_LINE(c_p.playerid || ' | ' || c_p.name || ' | ' || ROUND(c_p."Average_monster_level") ||
+                                     ' | ' || ROUND(c_p."Average_time_played"));
 
+                FOR c_t IN cur_team(c_p.playerid)
+                    LOOP
+                        DBMS_OUTPUT.PUT_LINE('-------------------------------------------------------------');
+                        DBMS_OUTPUT.PUT_LINE('TeamId | Team name | Average monster level');
+                        DBMS_OUTPUT.PUT_LINE('-------------------------------------------------------------');
+                        DBMS_OUTPUT.PUT_LINE(c_t.teamid || ' | ' || c_t.teamname || ' | ' ||
+                                             ROUND(c_t."Average_monster_level"));
+                        DBMS_OUTPUT.PUT_LINE('---------------------------------------------------');
+                        DBMS_OUTPUT.PUT_LINE('MonsterId | Monster name | Average monster level');
+                        DBMS_OUTPUT.PUT_LINE('---------------------------------------------------');
+                        FOR c_m IN cur_monster(c_t.teamid)
+                            LOOP
+                                DBMS_OUTPUT.PUT_LINE(c_m.monsterid || ' | ' || c_m.monstername || ' | ' || c_m."level");--|| ' | ' ||c_m."Average_monster_level")
 
-        EXIT WHEN cur_player%rowcount >= p_amountplayers;
-        END LOOP;
+                                EXIT WHEN cur_monster%ROWCOUNT >= p_amountmonsters;
+                            END LOOP;
+
+                        EXIT WHEN cur_team%ROWCOUNT >= p_amountteams;
+                    END LOOP;
+
+                EXIT WHEN cur_player%ROWCOUNT >= p_amountplayers;
+            END LOOP;
+
+    EXCEPTION
+        WHEN e_negative
+            THEN
+                DBMS_OUTPUT.PUT_LINE('You tried to enter a negative number');
+
     END printreport_2_levels;
 
 END PKG_Razumon;

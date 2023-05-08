@@ -1,6 +1,6 @@
 BEGIN
     --Emptying the existing tables
-    PKG_Razumon.empty_tables();
+--PKG_Razumon.empty_tables();
    --Filling in the player table
 -- PKG_Razumon.add_player('Sam','Male',10,5,'randomstraat10',DATE '2020-11-04',DATE '2023-04-05');
 -- PKG_Razumon.add_player('Elyse','Female',20,10,'randomstraat15',DATE '2019-05-21',DATE '2020-03-15');
@@ -43,7 +43,8 @@ BEGIN
 -- PKG_RAZUMON.generate_random_relation(50);
 -- PKG_RAZUMON.generate_random_team(40);
 -- PKG_RAZUMON.generate_random_monster(50);
-   PKG_RAZUMON.bewijs_milestone_5();
-   PKG_RAZUMON.genereer_Veel_op_Veel( 20, 20, 50);
-   PKG_RAZUMON.genereer_2_levels(20,40,50);
+--   PKG_RAZUMON.bewijs_milestone_5();
+--   PKG_RAZUMON.genereer_Veel_op_Veel( 20, 20, 50);
+--   PKG_RAZUMON.genereer_2_levels(20,40,50);
+    PKG_RAZUMON.printreport_2_levels();
 END;

@@ -1,0 +1,5 @@
+PROJECT> BEGIN
+             PKG_RAZUMON.printreport_2_levels(-3,2,5);
+         END;
+[2023-05-08 22:41:06] completed in 62 ms
+You tried to enter a negative number

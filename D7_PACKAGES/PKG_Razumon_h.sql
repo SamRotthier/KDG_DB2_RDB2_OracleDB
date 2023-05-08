@@ -83,7 +83,7 @@ AS
     PROCEDURE bewijs_milestone_5;
 
     PROCEDURE printreport_2_levels(
-        p_x IN NUMBER,
-        p_y IN NUMBER,
-        p_z IN NUMBER);
+        p_amountplayers IN NUMBER,
+        p_amountteams IN NUMBER,
+        p_amountmonsters IN NUMBER);
 END PKG_Razumon;
