@@ -1,8 +1,9 @@
 CREATE OR REPLACE PACKAGE BODY PKG_Razumon
 AS
-    -- Private M4
-    -- Lookup functions
-    -- lookup playerid
+    -- Private M4 --
+    -- Private lookup functions --
+
+    -- Lookup function for a playerid
     FUNCTION lookup_playerid(
         p_name player.name%TYPE
     )
@@ -19,7 +20,7 @@ AS
         RETURN lu_player_id;
     END lookup_playerid;
 
-    -- lookup guildid
+    -- Lookup function for a guildid
     FUNCTION lookup_guildid(
         p_guildname guild.guildname%TYPE
     )
@@ -35,7 +36,7 @@ AS
         RETURN lu_guild_id;
     END lookup_guildid;
 
-    -- lookup teamid
+    -- Lookup function for a teamid
     FUNCTION lookup_teamid(
         p_teamname team.teamname%TYPE
     )
@@ -51,7 +52,7 @@ AS
         RETURN lu_team_id;
     END lookup_teamid;
 
-    -- lookup monsterid
+    -- Lookup function for a monsterid
     FUNCTION lookup_monsterid(
         p_monstername monster.monstername%TYPE
     )
@@ -67,7 +68,10 @@ AS
         RETURN lu_monster_id;
     END lookup_monsterid;
 
-    -- Private M5
+    -- Private M5 --
+    -- Private random functions --
+
+    -- This function returns a random number between a min and a max
     FUNCTION random_number(
         p_min IN NUMBER,
         p_max IN NUMBER)
@@ -77,6 +81,7 @@ AS
         RETURN TRUNC(dbms_random.VALUE(p_min, p_max));
     END random_number;
 
+    -- This function returns a random date between 2 values
     FUNCTION random_date(
         p_from IN DATE,
         p_to IN DATE)
@@ -90,6 +95,7 @@ AS
         RETURN p_from + lu_datepick;
     END random_date;
 
+    -- This function returns a random gender out of the list
     FUNCTION random_gender
         RETURN player.gender%TYPE
         IS
@@ -99,15 +105,7 @@ AS
         RETURN t_type(random_number(1, t_type.COUNT));
     END random_gender;
 
-    FUNCTION random_guildskill
-        RETURN guild.GUILDSKILL%TYPE
-        IS
-        TYPE type_varray_type IS VARRAY(5) OF VARCHAR2(20);
-        t_type type_varray_type := type_varray_type('Building', 'Crafting', 'Farming', 'Hunting', 'Mining');
-    BEGIN
-        RETURN t_type(random_number(1, t_type.COUNT));
-    END random_guildskill;
-
+    -- This function returns the  player count
     FUNCTION lookup_playercount
         RETURN INTEGER
     AS
@@ -121,6 +119,7 @@ AS
         RETURN v_playerid.COUNT;
     END lookup_playercount;
 
+    -- This function returns a random player id
     FUNCTION random_playerid
         RETURN INTEGER
     AS
@@ -133,6 +132,7 @@ AS
         RETURN v_playerid(random_number(1, v_playerid.COUNT));
     END random_playerid;
 
+    -- This function returns a random player name
     FUNCTION random_playername
         RETURN STRING
     AS
@@ -147,6 +147,7 @@ AS
         RETURN v_playernames(v_playername);
     END random_playername;
 
+    -- This function returns a random guild id
     FUNCTION random_guildid
         RETURN INTEGER
     AS
@@ -159,6 +160,7 @@ AS
         RETURN v_guildid(random_number(1, v_guildid.COUNT));
     END random_guildid;
 
+    -- This function returns a random guild name
     FUNCTION random_guildname
         RETURN STRING
     AS
@@ -175,6 +177,17 @@ AS
         RETURN v_guildnames(v_guildname);
     END random_guildname;
 
+    -- This function returns a random guild skill
+    FUNCTION random_guildskill
+        RETURN guild.GUILDSKILL%TYPE
+        IS
+        TYPE type_varray_type IS VARRAY(5) OF VARCHAR2(20);
+        t_type type_varray_type := type_varray_type('Building', 'Crafting', 'Farming', 'Hunting', 'Mining');
+    BEGIN
+        RETURN t_type(random_number(1, t_type.COUNT));
+    END random_guildskill;
+
+    -- This function returns a random team name
     FUNCTION random_teamname
         RETURN STRING
     AS
@@ -189,6 +202,7 @@ AS
         RETURN v_teamnames(v_teamname);
     END random_teamname;
 
+    -- This function returns a random boolean
     FUNCTION random_bool
         RETURN CHAR
         IS
@@ -203,8 +217,10 @@ AS
         RETURN t_bool(random_number(1, 3));
     END random_bool;
 
-    -- Public M4
-    -- Empty tables
+    -- Private M4 --
+    -- Private empty and addition procedures --
+
+    -- Public procedure to Empty the tables
     PROCEDURE empty_tables
     AS
     BEGIN
@@ -233,7 +249,7 @@ AS
         EXECUTE IMMEDIATE 'ALTER TABLE monster MODIFY monsterid GENERATED ALWAYS AS IDENTITY (START WITH 1)';
     END empty_tables;
 
-    -- add Players in player table
+    -- Private procedure to add Players in player table
     PROCEDURE add_player(
         p_name player.name%TYPE,
         p_gender player.gender%TYPE,
@@ -262,7 +278,7 @@ AS
         COMMIT;
     END add_player;
 
-    -- add guilds in guild table
+    -- Private procedure to add guilds in guild table
     PROCEDURE add_guild(
         p_guildname guild.guildname%TYPE,
         p_guildskill guild.guildskill%TYPE,
@@ -287,7 +303,7 @@ AS
         COMMIT;
     END add_guild;
 
-    -- add relations in relation table
+    -- Private procedure to add relations in relation table
     PROCEDURE add_relation(
         p_guildname guild.guildname%TYPE,
         p_name player.name%TYPE
@@ -306,7 +322,7 @@ AS
         COMMIT;
     END add_relation;
 
-    -- add teams in team table
+    -- Private procedure to add teams in team table
     PROCEDURE add_team(
         p_teamname team.teamname%TYPE,
         p_timeplayedwithteam team.timeplayedwithteam%TYPE,
@@ -325,7 +341,7 @@ AS
         COMMIT;
     END add_team;
 
-    -- add monsters in monster table
+    -- Private procedure to add monsters in monster table
     PROCEDURE add_monster(
         p_monstername monster.monstername%TYPE,
         p_health monster.health%TYPE,
@@ -350,7 +366,10 @@ AS
         COMMIT;
     END add_monster;
 
-    -- public M5
+    -- Private M5 --
+    -- Private generate functions --
+
+    -- private procedure to generate a random player
     PROCEDURE generate_random_player(
         p_amount IN NUMBER DEFAULT 1
     )
@@ -392,6 +411,7 @@ AS
             END LOOP;
     END generate_random_player;
 
+    -- private procedure to generate a random guild
     PROCEDURE generate_random_guild(
         p_amount IN NUMBER DEFAULT 1
     )
@@ -425,7 +445,7 @@ AS
             END LOOP;
     END generate_random_guild;
 
-
+    -- private procedure to generate a random relation
     PROCEDURE generate_random_relation(
         p_amount IN NUMBER DEFAULT 1
     )
@@ -448,6 +468,7 @@ AS
             END LOOP;
     END generate_random_relation;
 
+    -- private procedure to generate a random team
     PROCEDURE generate_random_team(
         p_amount IN NUMBER DEFAULT 1
     )
@@ -473,6 +494,7 @@ AS
             END LOOP;
     END generate_random_team;
 
+    -- private procedure to generate teams per player
     PROCEDURE generate_teams_each_player(
         p_amount IN NUMBER DEFAULT 1
     )
@@ -513,7 +535,7 @@ AS
 
     END generate_teams_each_player;
 
-
+    -- private procedure to generate a random monster
     PROCEDURE generate_random_monster(
         p_amount IN NUMBER DEFAULT 1
     )
@@ -547,6 +569,7 @@ AS
             END LOOP;
     END generate_random_monster;
 
+    -- private procedure to generate monsters per team
     PROCEDURE generate_monsters_each_team(
         p_amountmonsters IN NUMBER DEFAULT 1,
         p_amountteams IN NUMBER DEFAULT 1
@@ -606,6 +629,9 @@ AS
         dbms_output.put_line('generate monsters(' || p_amountmonsters || ') generated ' || v_count || ' rows');
     END generate_monsters_each_team;
 
+    --Public procedures --
+
+    -- public procedure to generate the many to many relation (guild and player)
     PROCEDURE genereer_Veel_op_Veel(
         p_amountplayers IN NUMBER DEFAULT 1,
         p_amountguilds IN NUMBER DEFAULT 1,
@@ -631,6 +657,7 @@ AS
 
     END genereer_Veel_op_Veel;
 
+    -- public procedure to generate the 2 levels deep (player => team => monster)
     PROCEDURE genereer_2_levels(
         p_amountplayers IN NUMBER DEFAULT 1,
         p_amountteams IN NUMBER DEFAULT 1,
@@ -662,6 +689,7 @@ AS
         dbms_output.put_line('The Duration of generate_2_levels was ' || TO_CHAR(t2 - t1, 'SSSS.FF'));
     END genereer_2_levels;
 
+    -- public procedure to generate the proof for milestone 5
     PROCEDURE bewijs_milestone_5
     AS
     BEGIN
@@ -675,7 +703,8 @@ AS
 
     END bewijs_milestone_5;
 
-    --M6
+    -- Public M6 --
+    -- public procedure to generate the raport for 2 levels deep (average levels of monsters for players and teams)
     PROCEDURE printreport_2_levels(
         p_amountplayers IN NUMBER,
         p_amountteams IN NUMBER,
